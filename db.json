@@ -1,0 +1,114 @@
+{
+  "tweets": [
+    {
+      "sender": {
+        "name": "Xiaomi",
+        "id": "Xiaomi@",
+        "img": "/images/xiaomi.png"
+      },
+      "text": "اکنون از ما #خرید کنید",
+      "likes": 283
+    },
+    {
+      "sender": {
+        "name": "احمد کوهی",
+        "id": "koohi@",
+        "img": "/images/koooh_user.png"
+      },
+      "text": "کی میاد بریم شکار",
+      "likes": 101
+    },
+    {
+      "sender": {
+        "name": "Xiaomi",
+        "id": "Xiaomi@",
+        "img": "/images/xiaomi.png"
+      },
+      "text": "اکنون از ما #خرید کنید",
+      "likes": 283
+    },
+    {
+      "sender": {
+        "name": "احمد کوهی",
+        "id": "koohi@",
+        "img": "/images/koooh_user.png"
+      },
+      "text": "کی میاد بریم شکار",
+      "likes": 101
+    },
+    {
+      "sender": {
+        "name": "Xiaomi",
+        "id": "Xiaomi@",
+        "img": "/images/xiaomi.png"
+      },
+      "text": "اکنون از ما #خرید کنید",
+      "likes": 283
+    },
+    {
+      "sender": {
+        "name": "احمد کوهی",
+        "id": "koohi@",
+        "img": "/images/koooh_user.png"
+      },
+      "text": "کی میاد بریم شکار",
+      "likes": 101
+    },
+    {
+      "sender": {
+        "name": "Xiaomi",
+        "id": "Xiaomi@",
+        "img": "/images/xiaomi.png"
+      },
+      "text": "اکنون از ما #خرید کنید",
+      "likes": 283
+    },
+    {
+      "sender": {
+        "name": "احمد کوهی",
+        "id": "koohi@",
+        "img": "/images/koooh_user.png"
+      },
+      "text": "کی میاد بریم شکار",
+      "likes": 101
+    }
+  ],
+  "hashtags": [
+    "پرچم_دار_جدید",
+    "جدایی_مسی",
+    "کرونا_ویروس",
+    "پرچم_دار_جدید",
+    "جدایی_مسی",
+    "کرونا_ویروس",
+    "پرچم_دار_جدید",
+    "جدایی_مسی",
+    "کرونا_ویروس"
+  ],
+  "users": [
+    {
+      "name": "Xiaomi",
+      "id": "Xiaomi@",
+      "img": "/images/xiaomi.png"
+    },
+    {
+      "name": "Stive Jabz",
+      "id": "jabzz@",
+      "img": "/images/mike.png"
+    },
+    {
+      "name": "AhmadiNezhad",
+      "id": "mamooti@",
+      "img": "/images/shily.png"
+    },
+    {
+      "name": "Rouhani",
+      "id": "Rouhani@",
+      "img": "/images/bil.png"
+    },
+    {
+      "name": "Sepehri",
+      "id": "sepehri@",
+      "img": "/images/samsung.png"
+    }
+  ]
+}

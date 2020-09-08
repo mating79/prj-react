@@ -1,0 +1,19 @@
+body{
+    margin: 0;
+    direction: rtl;
+}
+.editable:empty:before {
+    content: attr(data-placeholder);
+    color: #999999;
+}
+
+a {
+text-decoration : none;
+color:unset;
+}
+a:visited{
+    color:unset;
+}
+.inp_m_b{
+    margin-bottom: 10px;
+}
