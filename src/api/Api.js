@@ -15,4 +15,12 @@ export const getaxiosinstanceauth = () => {
         }
     });
 };
+export const getaxiosinstanceApi = () => {
+    return Axios.create({
+        baseURL: "https://twitterapi.liara.run/api/",
+        headers: {
+           'x-auth-token':localStorage.getItem('X-auth-token')
+        }
+    });
+};
 

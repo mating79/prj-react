@@ -4,31 +4,42 @@ import { Grid, Button, IconButton } from '@material-ui/core';
 import classnames from 'classnames';
 import Axios from 'axios';
 import { postnewtweetrequest } from '../../../api/Apitweets';
-const Newtweet = () => {
-    const [txt, setTxt] = useState('')
+import { toast } from 'react-toastify';
+const Newtweet = ({ updateTweets }) => {
+    const [txt, setTxt] = React.useState();
+
+
+
     const newtweetclick = () => {
+        const tweetText = txt;
+        if (!tweetText)
+            return;
         const data = {
-            id: Math.floor(Math.random() * 1000),
-            'sender': { "name": "matin", "id": "matin.gs@", "img": "/images/t1.jpg" },
             "text": txt,
-            "likes": Math.floor(Math.random() * 100)
         }
 
-        postnewtweetrequest(data, (isok) => {
+        postnewtweetrequest(data, (isok, data) => {
             if (!isok)
-                return alert("نشد")
-            alert("Done !")
+                return toast.error(data);
+            toast.success("Done !");
+            updateTweets();
+            setTxt("");
 
         })
 
     };
     const classes = useStyles()
+    const getimage = () => {
+        if (localStorage.getItem("image") && localStorage.getItem("image") !== 'undefined') { return localStorage.getItem("image") }
+        return "images/th.jpg";
+    }
+
 
     return (
         <div className={classes.newtweet}>
             <Grid container>
-                <img src="images/t1.jpg" alt="" className={classes.newtweetimg} />
-                <input onChange={event => setTxt(event.target.value)} placeholder={"توییت کن ..."} className={classnames(classes.input, "editable")} />
+                <img src={getimage()} alt="" className={classes.newtweetimg} />
+                <input value={txt} onChange={event => setTxt(event.target.value)} placeholder={"توییت کن ..."} className={classnames(classes.input)} />
             </Grid>
             <Grid container direction={"row-reverse"} style={{ marginTop: 16 }}>
                 <Button onClick={newtweetclick} variant={"contained"} className={classes.newTweetBtn}>توییت</Button>

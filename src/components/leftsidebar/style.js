@@ -12,7 +12,8 @@ const useStyles = makeStyles({
   },
   aboutimage: {
     borderRadius: "50%",
-    width: "max-content",
+    width: "50px",
+    height:"50px",
     marginRight: "8px"
   },
   profname: {
@@ -57,7 +58,16 @@ const useStyles = makeStyles({
     direction: "rtl",
     textAlign:"right",
   },
-
+  exitbutton:{
+    
+      fontSize: "18px ",
+      fontFamily: "shabnam !important",
+      fontWeight: 500,
+      marginLeft: "auto",
+      backgroundColor: "gainsboro",
+      width: "100px",
+      height: "50px"
+  }
 
 });
 

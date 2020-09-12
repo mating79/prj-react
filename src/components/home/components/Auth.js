@@ -52,10 +52,12 @@ const Auth = () => {
             if (!isok)
                 return toast.error("ثبت نام انجام نشد");
             toast.success("با موفقیت ثبت نام شدید");
-             localStorage.setItem("name", data.name)
-             localStorage.setItem("username", data.username)
-             localStorage.setItem("image", data.image)
-             localStorage.setItem("X-auth-token", data["x-auth-token"])
+             localStorage.setItem("name", data.name);
+             localStorage.setItem("username", data.username);
+             localStorage.setItem("image", data.image);
+             localStorage.setItem("X-auth-token", data["x-auth-token"]);
+            window.location.reload();
+
 
 
         })
@@ -83,12 +85,13 @@ const Auth = () => {
         }
         loginApi(user, (isok, data) => {
             if (!isok)
-                return toast.error("انجام نشد");
+                return toast.error(" رمز عبور یا نام کاربری اشتباه است");
             toast.success("با موفقیت وارد شدید");
-            localStorage.setItem("name", data.name)
-            localStorage.setItem("username", data.username)
-            localStorage.setItem("image", data.image)
-            localStorage.setItem("X-auth-token", data["x-auth-token"])
+            localStorage.setItem("name", data.name);
+            localStorage.setItem("username", data.username);
+            localStorage.setItem("image", data.image);
+            localStorage.setItem("X-auth-token", data["x-auth-token"]);
+            window.location.reload();
 
 
         })
@@ -97,7 +100,8 @@ const Auth = () => {
     const handleChangeTab = (e, newValue) => {
         setTabs(newValue);
     }
-    return (<Paper className={classes.container}>
+    return (
+    <Paper className={classes.container}>
         <Typography className={classes.headerTitle}>
             خوش آمدید
 </Typography>
@@ -134,7 +138,8 @@ const Auth = () => {
                 <Button variant={"contained"} className={classes.btn} onClick={handleRegister}>ثبت نام</Button>
             </div>}
 
-    </Paper>);
+    </Paper>
+    );
 }
 
 export default Auth;

@@ -2,26 +2,31 @@ import React from 'react';
 import useStyles from '../style';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { Grid, IconButton, Typography } from '@material-ui/core';
-const renderTweet =(text)=>{
-return {__html:text.replace(/#\S+/g,"<a href='/tags/$&' style='color:cornflowerblue'>$&</a>")};
+const renderTweet = (text) => {
+    return { __html: text.replace(/#\S+/g, "<a href='/tags/$&' style='color:cornflowerblue'>$&</a>") };
 }
 const Tweet = ({ data }) => {
-    const classes = useStyles()
+    const classes = useStyles();
+    const getimage = () => {
+        if (data.user.image)
+           return  data.user.image;
+           else return "images/add-user.png";
+    }
     return (<div className={classes.newtweet}>
         <Grid container >
 
-            <img src={data.sender.img} alt="" className={classes.tweetlistimg} />
+            <img src={getimage()} alt="" className={classes.tweetlistimg} />
 
             <Grid item container direction={"column"} style={{ flex: 1, marginRight: "8px" }}>
                 <Grid item container>
-                    <Typography className={classes.tweetlistname}> {data.sender.name}</Typography>
-                    <Typography className={classes.tweetlistid}>{data.sender.id}</Typography>
+                    <Typography className={classes.tweetlistname}> {data.user.name}</Typography>
+                    <Typography className={classes.tweetlistid}>{data.user.id}</Typography>
                 </Grid>
 
                 <Typography dangerouslySetInnerHTML={renderTweet(data.text)} className={classes.tweetlisttext} component={"p"}>
-                   
 
-        </Typography>
+
+                </Typography>
             </Grid>
         </Grid>
         <Grid container direction={"row-reverse"} style={{ marginTop: 16 }}>

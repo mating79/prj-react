@@ -14,6 +14,11 @@ const Home = () => {
     const classes = useStyles();
     const [tweets,setTweets]=useState([]);
     useEffect(() => {
+        updateTweets();
+    }, []);
+
+
+    const updateTweets = ()=>{
         getalltweets((isok, data) => {
             if (!isok) {
                 alert(data.message);
@@ -21,14 +26,14 @@ const Home = () => {
                 setTweets(data)
             }
         });
-    }, [])
+    }
 
 
 
     return (<div className={classes.root}>
         <Header title={"خانه"} icon={<HomeIcon />} />
         <Divider className={classes.divider}></Divider>
-        <Newtweet />
+        <Newtweet updateTweets={updateTweets}/>
         <Tweetlist data={tweets} />
 
 

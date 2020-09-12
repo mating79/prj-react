@@ -1,7 +1,7 @@
-import  {getaxiosinstance}  from './Api'
+import  {getaxiosinstance, getaxiosinstanceApi}  from './Api'
 export const getalltweets = (callback) => {
 
-    getaxiosinstance().get("/tweets")
+    getaxiosinstanceApi().post("getAllTweet")
         .then(Response => {
             const data = Response.data;
             callback(true, data);
@@ -35,12 +35,14 @@ export const getusers = (callback)=>{
     })
 };
 export const postnewtweetrequest = (data,callback)=>{
-    getaxiosinstance().post('/tweets', data)
-    .then((response) => {
-        callback(true)
+    getaxiosinstanceApi().post('newTweet', data)
+    .then(Response => {
+        const data = Response.data;
+        callback(true, data);
     })
-    .catch((error) => {
-        callback(false)
+    .catch(error => {
+        console.log(error);
+        callback(false, error);
 
-    });
+    })
 };

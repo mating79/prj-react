@@ -31,7 +31,8 @@ const useStyles = makeStyles({
   },
   newtweetimg: {
     borderRadius: "50%",
-    width: "max-content",
+    width: "50px",
+    height:"50px"
 
   },
   input: {
