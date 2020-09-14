@@ -3,16 +3,19 @@ import useStyles from './style';
 import Header from '../header/Header';
 import { Divider } from '@material-ui/core';
 import Newtweet from './components/Newtweet';
-import Tweetlist from './components/tweetlist';
+import TweetList from './components/tweetlist';
 import HomeIcon from '@material-ui/icons/Home';
 import Axios from 'axios';
 import { getalltweets } from '../../api/Apitweets';
+import { setTweetList, useTweetDispatch, useTweetState } from '../../context/TweetContext';
 
 
 
 const Home = () => {
     const classes = useStyles();
-    const [tweets,setTweets]=useState([]);
+    const {tweetList : tweets} = useTweetState();
+    const tweetDispatch = useTweetDispatch();
+    // const [tweets,setTweets]=useState([]);
     useEffect(() => {
         updateTweets();
     }, []);
@@ -21,9 +24,9 @@ const Home = () => {
     const updateTweets = ()=>{
         getalltweets((isok, data) => {
             if (!isok) {
-                alert(data.message);
+                return alert(data.message);
             }else{
-                setTweets(data)
+                setTweetList(tweetDispatch,data)
             }
         });
     }
@@ -34,7 +37,7 @@ const Home = () => {
         <Header title={"خانه"} icon={<HomeIcon />} />
         <Divider className={classes.divider}></Divider>
         <Newtweet updateTweets={updateTweets}/>
-        <Tweetlist data={tweets} />
+        <TweetList data={tweets} />
 
 
     </div>);

@@ -1,7 +1,7 @@
 import React from 'react';
 import Tweet from './tweet';
 
-const Tweetlist = ({data}) => {
+const TweetList = ({data}) => {
     return (
         <div>
             
@@ -10,4 +10,4 @@ const Tweetlist = ({data}) => {
 
         </div>);
 }
-export default Tweetlist;
+export default TweetList;

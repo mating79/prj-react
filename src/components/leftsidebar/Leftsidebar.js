@@ -2,16 +2,18 @@ import React, { useEffect, useState, useRef } from 'react';
 import useStyle from './style';
 import { Grid, Typography, Divider, ButtonBase, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import Axios from 'axios';
 import { getusers } from '../../api/Apitweets';
 import { uploadUserPhoto } from '../../api/ApiAuth';
 import { toast } from 'react-toastify';
 const Tweetcomponents = ({ name, id, img }) => {
     const classes = useStyle();
-    return <ButtonBase style={{ width: '100%' }} >
-        <Grid container direction={"row"}>
-            <img className={classes.aboutimage2} src={img} alt="" />
+    const getimage = () => {
+        if (img) { return img }
+        return "images/th.jpg";
+    }
+    return <ButtonBase >
+        <Grid container direction={"row"}  >
+            <img className={classes.aboutimage} src={getimage()} alt="" />
             <Grid item container direction={"column"} className={classes.profile}>
                 <Typography className={classes.profname2}>
                     {name}
@@ -45,7 +47,7 @@ const Leftsidebar = () => {
     }, [])
 
     const getimage = () => {
-        if(imagePath){return imagePath}
+        if (imagePath) { return imagePath }
         if (localStorage.getItem("image") && localStorage.getItem("image") !== 'undefined') { return localStorage.getItem("image") }
         return "images/add-user.png";
     }
@@ -59,13 +61,14 @@ const Leftsidebar = () => {
         }
         reader.readAsDataURL(e.target.files[0]);
         const formData = new FormData();
-        formData.append("image",e.target.files[0])
-        uploadUserPhoto(formData,(isok,data)=>{
-            if(!isok){toast.error(data)};
+        formData.append("image", e.target.files[0])
+        uploadUserPhoto(formData, (isok, data) => {
+            if (!isok) { toast.error(data) };
             toast.success('عکس شما با موفقیت آپلود شد')
-            localStorage.setItem('image',data.imagePath)
+            localStorage.setItem('image', data.imagePath)
         })
-    }
+    };
+
 
     return (<div className={classes.root}>
         <Grid container direction={"row-reverse"}>
@@ -87,9 +90,9 @@ const Leftsidebar = () => {
             </Typography>
             <Divider orientation={"horizontal"} style={{ marginLeft: "-24px", marginRight: "-24px" }} />
             {users.map((item, index) => {
-                return (<Link to={"/tweetbyuser/" + item.name} style={{ width: '100%' }}>
+                return (<Link to={"/tweetbyuser/" + item._id + "/" + item.name} style={{ width: '100%' }}>
 
-                    <Tweetcomponents name={item.name} id={item.id} img={item.img} />
+                    <Tweetcomponents name={item.name} id={item.username} img={item.image} />
                     {index !== users.length - 1 &&
                         <Divider style={{ marginLeft: "-24px", marginRight: "-24px" }} />
                     }

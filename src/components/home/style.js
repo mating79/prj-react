@@ -64,6 +64,8 @@ const useStyles = makeStyles({
   tweetlistimg: {
     borderRadius: "50%",
     height: "max-content",
+    width:"50px",
+    height:"50px"
 
   },
   tweetlistname: {
@@ -86,6 +88,13 @@ const useStyles = makeStyles({
     marginTop:"10px"
 
   },
+  imagepath:{
+    width:"10rem" ,
+    height:"10rem",
+    marginTop:"1rem",
+    backgroundSize:'contain',
+    backgroundRepeat:'no-repeat',
+  }
 
 
 

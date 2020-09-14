@@ -3,7 +3,8 @@ const useStyles = makeStyles({
 
   root: {
     width: "25%",
-    padding: "20px 20px"
+    padding: "20px 20px",
+    overflowY:"auto"
 
   },
   profile: {
@@ -13,19 +14,21 @@ const useStyles = makeStyles({
   aboutimage: {
     borderRadius: "50%",
     width: "50px",
-    height:"50px",
-    marginRight: "8px"
+    height: "50px",
+    marginRight: "8px",
+    marginTop:"8px"
+
   },
   profname: {
     flex: 1,
     fontSize: "18px"
   },
-   profid: {
-     flex: 1,
-     color: "#898989",
-     fontSize: "14px",
-    
-   },
+  profid: {
+    flex: 1,
+    color: "#898989",
+    fontSize: "14px",
+
+  },
   beststitle: {
 
     marginTop: "30px",
@@ -56,17 +59,17 @@ const useStyles = makeStyles({
     color: "#898989",
     fontSize: "14px",
     direction: "rtl",
-    textAlign:"right",
+    textAlign: "right",
   },
-  exitbutton:{
-    
-      fontSize: "18px ",
-      fontFamily: "shabnam !important",
-      fontWeight: 500,
-      marginLeft: "auto",
-      backgroundColor: "gainsboro",
-      width: "100px",
-      height: "50px"
+  exitbutton: {
+
+    fontSize: "18px ",
+    fontFamily: "shabnam !important",
+    fontWeight: 500,
+    marginLeft: "auto",
+    backgroundColor: "gainsboro",
+    width: "100px",
+    height: "50px"
   }
 
 });

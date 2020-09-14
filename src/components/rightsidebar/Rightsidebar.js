@@ -5,17 +5,22 @@ import { Grid, ButtonBase } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import { gethashtags } from '../../api/Apitweets';
+import { useTweetDispatch, useTweetState,sethashTagList } from '../../context/TweetContext';
+import { toast } from 'react-toastify';
 
 const Rightsidebar = () => {
 
     const classes = useStyle();
-    const [hashtags, setHashtags] = useState([])
+    const {hashTags:hashtags} = useTweetState();
+    const hashTagDispatch = useTweetDispatch();
+    // const [hashtags, setHashtags] = useState([])
     useEffect(() => {
         gethashtags  ((isok, data) => {
             if (!isok) {
-                alert(data.message);
+                toast.error(data.message);
             }else{
-                setHashtags(data)
+                sethashTagList(hashTagDispatch,data);
+                
             }
         });
     }, [])
@@ -38,12 +43,12 @@ const Rightsidebar = () => {
 
         <Grid container direction={"column"} alignItems={"center"} >
             {hashtags.map(item => <ButtonBase className={classes.hashtagparent}>
-                <Link to={"/tweetbyhashtag/" + item} style={{ width: "100%" }}>
+                <Link to={"/tweetbyhashtag/" + item.text} style={{ width: "100%" }}>
                     <Grid item container direction={"row"}>
                         <Grid item> <img src="/images/hashtag.png" alt="" /></Grid>
                         <Grid item>
                             <Typography className={classes.hashtagtext}>
-                                {item}
+                                {item.text}
                             </Typography>
                         </Grid>
                     </Grid>

@@ -12,8 +12,34 @@ export const getalltweets = (callback) => {
 
         })
 };
+export const getTweetByHashTagRequest = (hashTag,callback) => {
+
+    getaxiosinstanceApi().post("getAllTweet",{hashTag})
+        .then(Response => {
+            const data = Response.data;
+            callback(true, data);
+        })
+        .catch(error => {
+            console.log(error);
+            callback(false, error);
+
+        })
+};
+export const getTweetByUserRequest = (user,callback) => {
+
+    getaxiosinstanceApi().post("getAllTweet",{user})
+        .then(Response => {
+            const data = Response.data;
+            callback(true, data);
+        })
+        .catch(error => {
+            console.log(error);
+            callback(false, error);
+
+        })
+};
 export const gethashtags=(callback)=>{
-getaxiosinstance().get('/hashtags')
+getaxiosinstanceApi().get('/getAllHashTags')
 .then(response =>{
 const data = response.data;
 callback(true,data)
@@ -23,7 +49,7 @@ callback(false,error)
 });
 }
 export const getusers = (callback)=>{
-    getaxiosinstance().get("/users")
+    getaxiosinstanceApi().get("/getAllUser")
     .then(Response => {
         const data = Response.data;
         callback(true, data);
@@ -46,3 +72,16 @@ export const postnewtweetrequest = (data,callback)=>{
 
     })
 };
+export const likeTweetRequest = (id,callback)=>{
+    getaxiosinstanceApi().get('likeTweet/'+id)
+    .then(Response => {
+        const data = Response.data;
+        callback(true, data);
+    })
+    .catch(error => {
+        console.log(error);
+        callback(false, error);
+
+    })
+};
+

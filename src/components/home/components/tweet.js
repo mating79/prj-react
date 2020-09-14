@@ -2,15 +2,33 @@ import React from 'react';
 import useStyles from '../style';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { Grid, IconButton, Typography } from '@material-ui/core';
+import { likeTweet, setTweetText, useTweetDispatch } from '../../../context/TweetContext';
+import { likeTweetRequest } from '../../../api/Apitweets';
+import { toast } from 'react-toastify';
 const renderTweet = (text) => {
     return { __html: text.replace(/#\S+/g, "<a href='/tags/$&' style='color:cornflowerblue'>$&</a>") };
 }
+
 const Tweet = ({ data }) => {
+    const reTweetDispatch = useTweetDispatch();
+
+    const retweetClick = () => {
+        setTweetText(reTweetDispatch, data.text)
+    }
     const classes = useStyles();
     const getimage = () => {
         if (data.user.image)
-           return  data.user.image;
-           else return "images/add-user.png";
+            return data.user.image;
+        else return "images/add-user.png";
+    }
+    const handleLike = () => {
+        likeTweetRequest(data._id, (isok, data) => {
+            if (!isok)
+                return toast.error("لایک نشد!")
+            likeTweet(reTweetDispatch, data._id)
+
+
+        })
     }
     return (<div className={classes.newtweet}>
         <Grid container >
@@ -23,17 +41,20 @@ const Tweet = ({ data }) => {
                     <Typography className={classes.tweetlistid}>{data.user.id}</Typography>
                 </Grid>
 
-                <Typography dangerouslySetInnerHTML={renderTweet(data.text)} className={classes.tweetlisttext} component={"p"}>
-
-
-                </Typography>
+                <Typography dangerouslySetInnerHTML={renderTweet(data.text)} className={classes.tweetlisttext} component={"p"} />
+                {
+                    data.image &&
+                    <div>
+                        <div style={{ backgroundImage: `url(${data.image})` }} className={classes.imagepath}>   </div>
+                    </div>
+                }
             </Grid>
         </Grid>
         <Grid container direction={"row-reverse"} style={{ marginTop: 16 }}>
-            <IconButton className={classes.newtweetbtnimg}>
+            <IconButton onClick={retweetClick} className={classes.newtweetbtnimg}>
                 <img src="/images/retweet.png" alt="" />
             </IconButton>
-            <IconButton className={classes.newtweetbtnimg}>
+            <IconButton onClick={handleLike} className={classes.newtweetbtnimg}>
                 <FavoriteBorderIcon>
 
                 </FavoriteBorderIcon>

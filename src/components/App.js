@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import P404 from './home/P404'
 import Auth from './home/components/Auth';
 import { ToastContainer } from 'react-toastify';
+import { TweetProvider } from '../context/TweetContext';
 // import { render } from '@testing-library/react';
 
 const App = () => {
@@ -17,16 +18,17 @@ const App = () => {
                 <Switch>
                     <PublicRoute path={"/login"} component={Auth} />
                     <PrivetRoute path={"/"} render={() =>
-                        {
-                            return <Layout>
+                        <TweetProvider>
+                            <Layout>
                                 <Switch>
                                     <Route exact path={"/"} component={Home} />
-                                    <Route path={"/tweetbyuser/:users"} component={Tweetbyuser} />
+                                    <Route path={"/tweetbyuser/:id/:name"} component={Tweetbyuser} />
                                     <Route path={"/tweetbyhashtag/:hashtags"} component={Tweetbyhashtag} />
                                     <Route component={P404} />
                                 </Switch>
                             </Layout>;
-                        }
+                            </TweetProvider>
+
 
                     } />
                 </Switch>
